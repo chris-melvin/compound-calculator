@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
   return (
-    <section className="dark:bg-bgdark ">
+    <section className="dark:bg-bgdark  min-h-screen">
       <Navbar />
       {children}
     </section>

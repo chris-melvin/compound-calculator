@@ -30,7 +30,7 @@ export default function Home() {
   };
   return (
     <Layout>
-      <div className="p-4 flex flex-col md:w-1/2 mx-auto dark:text-white text-black font-semibold font-sans space-y-4 md:h-full">
+      <div className="p-4 flex flex-col md:w-1/2 mx-auto dark:text-white text-black font-semibold font-sans space-y-4 ">
         <h1 className="text-2xl ">Compounding interest calculator</h1>
         <label htmlFor="initial">Initial Investment</label>
         <input
