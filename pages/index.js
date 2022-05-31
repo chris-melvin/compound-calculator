@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
@@ -28,10 +29,19 @@ export default function Home() {
       PMT * (((1 + r / n) ** (n * t) - 1) / (r / n));
     setState({ ...state, total: total });
   };
+  const toDecimal = (num) => {
+    return num
+      .toFixed(2)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   return (
     <Layout>
+      <Head>
+        <title>Home | Calculator</title>
+      </Head>
       <div className="p-4 flex flex-col md:w-1/2 mx-auto dark:text-white text-black font-semibold font-sans space-y-4 ">
-        <h1 className="text-2xl ">Compounding interest calculator</h1>
+        <h1 className="text-2xl ">Compound interest calculator</h1>
         <label htmlFor="initial">Initial Investment</label>
         <input
           className="p-4 dark:text-black rounded-md text-xl dark:bg-white bg-dark appearance-none"
@@ -95,13 +105,9 @@ export default function Home() {
           Submit
         </button>
         <h1 className="text-2xl">
-          Total Investment:{" "}
-          {state.total
-            .toFixed(2)
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
-          after {state.year} years of investing {state.monthly} pesos for{" "}
-          {state.month} {`${state.month > 1 ? "times" : "time"}`} each year
+          Total Investment: {toDecimal(state.total)} after {state.year} years of
+          investing {state.monthly} pesos for {state.month}{" "}
+          {`${state.month > 1 ? "times" : "time"}`} each year
         </h1>
       </div>
     </Layout>

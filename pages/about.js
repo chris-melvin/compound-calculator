@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React from "react";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
@@ -5,6 +6,9 @@ import Navbar from "../components/Navbar";
 const About = () => {
   return (
     <Layout>
+      <Head>
+        <title>About | Calculator</title>
+      </Head>
       <div className="dark:text-white  mx-auto md:w-1/2 space-y-2 p-4 ">
         <h1 className="text-2xl">About this project</h1>
         <p className="text-lg">
