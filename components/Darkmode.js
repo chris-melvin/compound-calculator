@@ -4,7 +4,6 @@ import { ThemeContext } from "./darkThemeContext";
 
 export default function Darkmode() {
   const theme = useContext(ThemeContext);
-  console.log(theme);
   const darkMode = theme.state.darkMode;
   useEffect(() => {
     document.body.classList.toggle("dark", darkMode);

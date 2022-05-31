@@ -7,15 +7,9 @@ export default function Home() {
     monthly: 1000,
     rate: 0.05,
     month: 12,
-    total: 0,
+    total: 163517.327,
     year: 10,
   });
-  function isNumberKey(evt) {
-    var charCode = evt.which ? evt.which : evt.keyCode;
-    if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57))
-      return false;
-    return true;
-  }
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.id]: e.target.value });
@@ -33,7 +27,7 @@ export default function Home() {
       PMT * (((1 + r / n) ** (n * t) - 1) / (r / n));
     setState({ ...state, total: total });
   };
-
+  console.log(state.total.toFixed(2));
   return (
     <section className="dark:bg-bgdark h-screen">
       <Navbar />
@@ -102,9 +96,13 @@ export default function Home() {
           Submit
         </button>
         <h1 className="text-2xl">
-          Total Investment: {state.total.toLocaleString("en")} after{" "}
-          {state.year.toLocaleString("en")} years of investing {state.month}{" "}
-          times per year
+          Total Investment:{" "}
+          {state.total
+            .toFixed(2)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+          after {state.year} years of investing {state.monthly} pesos for{" "}
+          {state.month} {`${state.month > 1 ? "times" : "time"}`} each year
         </h1>
       </div>
     </section>
